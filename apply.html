@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التقديم الإلكتروني - W.Walker Gang</title>
+        <link rel="icon" href="logo.png" type="image/png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="apply.css">
+</head>
+<body>
+    <div class="bg-overlay"></div>
+    <div class="particles" id="particles-js"></div>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo-text">W.WALKER</div>
+            <div class="nav-links">
+                <a href="index.html">العودة للرئيسية</a>
+            </div>
+        </div>
+    </nav>
+    <main class="apply-main">
+        <div class="form-container reveal active">
+            <div class="apply-header">
+                <h1 class="header-title">نموذج التقديم</h1>
+                <p class="header-subtitle">انضم إلى عصابة الولكر</p>
+            </div>
+            
+            <!-- AGREEMENT SECTION -->
+            <div class="agreement-box" id="agreementBox">
+                <h2 class="agreement-title">شروط الانضمام</h2>
+                <p class="agreement-text">
+                    من خلال الضغط على كلمة " <strong>موافق</strong> " انت توافق على جميع شروط الانضمام للعصابة وفي حال مخالفة الشروط تطبق الاحكام عليك
+                </p>
+                <ul class="agreement-list">
+                    <li>هل توافق على تغير اسمك لأسم العصابة ؟</li>
+                    <li>هل توافق على اختبار ايمك في ساحة تدريب الخادم ؟</li>
+                    <li>هل توافق على تفتيش جهازك و التأكد من عدم استخدام برامج غش ؟</li>
+                    <li>هل توافق على مبدأ التفتيش المفاجئ المتواجد في العصابة ( تفك شير فجأة و احنا بنص الاحتلال ) ؟</li>
+                    <li>هل توافق على التواجد في فويس العصابة طوال فترة التفاعل داخل الخادم ؟</li>
+                    <li>هل توافق على تغير اسمك لأسم العصابة ؟</li>
+                </ul>
+                <button class="btn btn-primary" id="agreeBtn" style="margin: 0 auto;">
+                    موافق
+                </button>
+            </div>
+
+            <!-- QUESTION CONTAINER -->
+            <div class="question-container" style="display:none;">
+                <div class="progress-section">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <div class="progress-text">
+                        السؤال <span id="currentQuestion">1</span> من <span id="totalQuestions">11</span>
+                    </div>
+                </div>
+                <div class="question-box">
+                    <h2 class="question-title" id="questionTitle"></h2>
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="answerInput" 
+                            class="answer-input" 
+                            placeholder="أدخل إجابتك هنا..."
+                            autocomplete="off"
+                        >
+                    </div>
+                </div>
+                <div class="button-group">
+                    <button class="btn btn-outline" id="prevBtn" style="display: none;">
+                        <i class="fas fa-arrow-right"></i> السابق
+                    </button>
+                    <button class="btn btn-primary" id="nextBtn">
+                        التالي <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                <div class="timer-box">
+                    <i class="fas fa-hourglass-start"></i>
+                    <span class="timer-label">الوقت المستغرق:</span>
+                    <span class="timer-value" id="timerValue">00:00</span>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="notification" id="notification">
+        <div class="notification-content">
+            <span class="notification-icon" id="notificationIcon">✓</span>
+            <span class="notification-text" id="notificationText">تم الإرسال بنجاح!</span>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="apply.js"></script>
+</body>
+</html>
