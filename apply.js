@@ -9,7 +9,7 @@ const questions = [
     { id: 'gangExperience', question: 'خبراتك في العصابات :' },
     { id: 'contribution', question: 'ماذا سوف تقدم للولكر ؟ :' },
     { id: 'dailyActivity', question: 'ما هو حد تفاعلك داخل الخادم بشكل يومي ؟ :' },
-    { id: 'voiceChat', question: 'التواج في الفويس اثناء وجودك باعصابه شئ مهم جدا ... هل عندك استعداد ؟ :' },
+    { id: 'voiceChat', question: 'التواجد في الفويس اثناء وجودك باعصابه شئ مهم جدا ... هل عندك استعداد ؟ :' },
     { id: 'discordUser', question: 'يوزرك بالديسكورد :' }
 ];
 
@@ -404,3 +404,4 @@ function showNotification(text, type = 'success') {
 
 // Initialize on load
 document.addEventListener('DOMContentLoaded', init);
+
