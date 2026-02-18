@@ -2,7 +2,7 @@
 const questions = [
     { id: 'realName', question: 'اسمك الحقيقي :' },
     { id: 'serverName', question: 'اسمك داخل الخادم :' },
-    { id: 'age', question: 'سنك :' },
+    { id: 'age', question: 'عمرك :' },
     { id: 'id', question: 'ايدي :' },
     { id: 'level', question: 'ليفلك :' },
     { id: 'serverHours', question: 'ساعاتك داخل الخادم :' },
@@ -332,149 +332,37 @@ async function submitForm() {
     stopTimer();
     const timeTaken = getElapsedTime();
 
-    // Prepare Discord Embeds
-    const embeds = [];
-
-    // Main Header Embed
-    const headerEmbed = {
-        title: '🎯 تقديم جديد - عصابة الولكر',
-        description: '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
-        color: 0x5865F2,
-        thumbnail: { url: 'https://cdn-icons-png.flaticon.com/512/747/747376.png' },
-        timestamp: new Date().toISOString()
-    };
-    embeds.push(headerEmbed);
-
-    // Personal Information Embed
-    const personalEmbed = {
-        title: '👤 المعلومات الشخصية',
-        color: 0x00d4ff,
-        fields: [
-            {
-                name: '📛 الاسم الحقيقي',
-                value: formAnswers['realName'] || '❌ لم يتم الرد',
-                inline: true
-            },
-            {
-                name: '🎮 اسم الخادم',
-                value: formAnswers['serverName'] || '❌ لم يتم الرد',
-                inline: true
-            },
-            {
-                name: '🎂 السن',
-                value: formAnswers['age'] || '❌ لم يتم الرد',
-                inline: true
-            },
-            {
-                name: '🆔 الايدي',
-                value: formAnswers['id'] || '❌ لم يتم الرد',
-                inline: true
-            },
-            {
-                name: '📊 المستوى',
-                value: formAnswers['level'] || '❌ لم يتم الرد',
-                inline: true
-            },
-            {
-                name: '⏰ ساعات الخادم',
-                value: formAnswers['serverHours'] || '❌ لم يتم الرد',
-                inline: true
-            }
-        ]
-    };
-    embeds.push(personalEmbed);
-
-    // Experience Embed
-    const experienceEmbed = {
-        title: '💼 الخبرة والمهارات',
-        color: 0x0b3d91,
-        fields: [
-            {
-                name: '🏆 خبرة العصابات',
-                value: formAnswers['gangExperience'] || '❌ لم يتم الرد'
-            },
-            {
-                name: '🎁 ما ستقدمه للعصابة',
-                value: formAnswers['contribution'] || '❌ لم يتم الرد'
-            },
-            {
-                name: '📈 مستوى التفاعل اليومي',
-                value: formAnswers['dailyActivity'] || '❌ لم يتم الرد'
-            },
-            {
-                name: '🎤 الاستعداد للفويس',
-                value: formAnswers['voiceChat'] || '❌ لم يتم الرد'
-            },
-            {
-                name: '💬 ديسكورد',
-                value: `\`${formAnswers['discordUser'] || 'لم يتم الرد'}\``
-            }
-        ]
-    };
-    embeds.push(experienceEmbed);
-
-    // Roleplay Knowledge Embed
-    const roleplayEmbed = {
-        title: '🎭 معرفة الرول بلاي',
-        color: 0xFF6B6B,
-        fields: [
-            {
-                name: '🔫 PG (Power Gaming)',
-                value: roleplayAnswers['pg'] || '❌ لم يتم الرد',
-                inline: true
-            },
-            {
-                name: '💀 PK (Player Kill)',
-                value: roleplayAnswers['pk'] || '❌ لم يتم الرد',
-                inline: true
-            },
-            {
-                name: '⏳ LTA (Long Term Absence)',
-                value: roleplayAnswers['lta'] || '❌ لم يتم الرد',
-                inline: true
-            },
-            {
-                name: '👮 PD (Police Department)',
-                value: roleplayAnswers['pd'] || '❌ لم يتم الرد',
-                inline: true
-            },
-            {
-                name: '🏢 MG (Metagaming)',
-                value: roleplayAnswers['mg'] || '❌ لم يتم الرد',
-                inline: true
-            }
-        ]
-    };
-    embeds.push(roleplayEmbed);
-
-    // Summary Embed
-    const summaryEmbed = {
-        title: '⏱️ ملخص التقديم',
-        color: 0x2ECC71,
-        fields: [
-            {
-                name: '⏰ الوقت المستغرق',
-                value: `\`${timeTaken}\``,
-                inline: true
-            },
-            {
-                name: '📅 التاريخ',
-                value: `<t:${Math.floor(Date.now() / 1000)}:F>`,
-                inline: true
-            }
-        ],
-        footer: {
-            text: '✅ تم استقبال التقديم بنجاح - W.Walker Gang System',
-            icon_url: 'https://cdn-icons-png.flaticon.com/512/845/845646.png'
-        }
-    };
-    embeds.push(summaryEmbed);
+    // Prepare Plain Text Organized Message
+    let messageContent = `**W.Walker Gang - New Application**\n`;
+    messageContent += `--------------------------------------------------\n`;
+    messageContent += `**Real Name:** ${formAnswers['realName'] || 'No Response'}\n`;
+    messageContent += `**Server Name:** ${formAnswers['serverName'] || 'No Response'}\n`;
+    messageContent += `**Age:** ${formAnswers['age'] || 'No Response'}\n`;
+    messageContent += `**ID:** ${formAnswers['id'] || 'No Response'}\n`;
+    messageContent += `**Level:** ${formAnswers['level'] || 'No Response'}\n`;
+    messageContent += `**Server Hours:** ${formAnswers['serverHours'] || 'No Response'}\n`;
+    messageContent += `--------------------------------------------------\n`;
+    messageContent += `**Gang Experience:** ${formAnswers['gangExperience'] || 'No Response'}\n`;
+    messageContent += `**Contribution:** ${formAnswers['contribution'] || 'No Response'}\n`;
+    messageContent += `**Daily Activity:** ${formAnswers['dailyActivity'] || 'No Response'}\n`;
+    messageContent += `**Voice Availability:** ${formAnswers['voiceChat'] || 'No Response'}\n`;
+    messageContent += `**Discord Username:** ${formAnswers['discordUser'] || 'No Response'}\n`;
+    messageContent += `--------------------------------------------------\n`;
+    messageContent += `**PG:** ${roleplayAnswers['pg'] || 'No Response'}\n`;
+    messageContent += `**PK:** ${roleplayAnswers['pk'] || 'No Response'}\n`;
+    messageContent += `**LTA:** ${roleplayAnswers['lta'] || 'No Response'}\n`;
+    messageContent += `**PD:** ${roleplayAnswers['pd'] || 'No Response'}\n`;
+    messageContent += `**MG:** ${roleplayAnswers['mg'] || 'No Response'}\n`;
+    messageContent += `--------------------------------------------------\n`;
+    messageContent += `**Time Taken:** ${timeTaken}\n`;
+    messageContent += `**Submission Date:** <t:${Math.floor(Date.now() / 1000)}:F>\n`;
+    messageContent += `--------------------------------------------------`;
 
     try {
         const response = await fetch(DISCORD_WEBHOOK_URL, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ embeds: embeds })
+            body: JSON.stringify({ content: messageContent })
         });
 
         if (response.ok) {
